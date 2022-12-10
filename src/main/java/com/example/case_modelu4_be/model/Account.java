@@ -18,6 +18,19 @@ public class Account {
     private boolean status;
     @ManyToOne
     @JoinColumn(name = "id_role")
-    private Roles role;
+    private Roles roles;
 
+    public Account() {
+    }
+
+    public Account(long id, String userName, String passWord, String phoneNumber, String email, String address, boolean status, Roles roles) {
+        this.id = id;
+        this.userName = userName;
+        this.passWord = passWord;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.status = status;
+        this.roles = roles;
+    }
 }
