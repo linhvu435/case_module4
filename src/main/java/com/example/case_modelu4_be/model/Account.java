@@ -20,4 +20,27 @@ public class Account {
     @JoinColumn(name = "id_role")
     private Roles role;
 
+    public Account() {
+    }
+
+    public Account(long id, String userName, String passWord, String phoneNumber, String email, String address, boolean status, Roles role) {
+        this.id = id;
+        this.userName = userName;
+        this.passWord = passWord;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.status = status;
+        this.role = role;
+    }
+
+    public Account(String userName, String passWord, String phoneNumber, String email, String address, boolean status, Roles role) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.status = status;
+        this.role = role;
+    }
 }

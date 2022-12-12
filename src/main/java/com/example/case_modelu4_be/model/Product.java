@@ -10,6 +10,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    @Column(name = "img", columnDefinition = "longtext")
     private String img;
     private double price;
     private int amount;
