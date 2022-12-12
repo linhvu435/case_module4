@@ -16,15 +16,15 @@ public class Account {
     private long id;
     @NotNull
 
-    @Size(min = 6)
+    @Size(min = 6 , message = "UserName phải từ 6 kí tự trở lên")
     private String userName;
     @NotNull
 
-    @Size(min = 6,max = 8)
+    @Size(min = 6,max = 8,message = "Mật khẩu từ 6-8 kí tu")
     private String passWord;
-    @Pattern(regexp = "(09|03|07|08|05)+([0-9]{8})\\b")
+    @Pattern(regexp = "(84|03|07|08|05)+([0-9]{8})\\b" , message = "Số điện thoại bắt đầu bằng 84")
     private String phoneNumber;
-    @Email
+
     private String email;
     @Column(columnDefinition = "nvarchar(800)")
     private String address;
@@ -46,4 +46,5 @@ public class Account {
         this.status = status;
         this.roles = roles;
     }
+
 }

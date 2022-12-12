@@ -27,7 +27,7 @@ public class AccountService implements IAccountService,UserDetailsService {
         Account account = iAccountRepo.findByUserName(username);
         List<Roles>roles = new ArrayList();
         roles.add(account.getRoles());
-        if (account != null) {
+        if (account != null && account.isStatus()== true) {
             return new User(account.getUserName(), account.getPassWord(), roles);
         }
         return null;
