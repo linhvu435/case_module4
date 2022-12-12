@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AccountService implements UserDetailsService {
+public class AccountService implements IAccountService,UserDetailsService {
     @Autowired
     IAccountRepo iAccountRepo;
 
@@ -32,6 +32,8 @@ public class AccountService implements UserDetailsService {
         }
         return null;
     }
+
+
    public List<Account>getAll(){
         return (List<Account>) iAccountRepo.findAll();
    }
@@ -40,19 +42,28 @@ public class AccountService implements UserDetailsService {
 
 
     }
-    public void setRoleByID(long id) {
-        iAccountRepo.saveRole(id);
-    }
+
    public Account save(Account account){
         return iAccountRepo.save(account);
    }
-   public Account findByEmail(String email){
+
+
+
+    @Override
+    public Account findByUsername(String username) {
+        return null;
+    }
+
+    @Override
+    public Optional<Account> checkDoubleUser(String userName) {
+        return iAccountRepo.checkDoubleUser(userName);
+    }
+
+    public Account findByEmail(String email){
         return iAccountRepo.findByEmail(email);
 
    }
-    public List<String> findRoleByUsername(String username){
-        return iAccountRepo.findRoleByUsername(username);
-    }
+
    public Optional<Account> findById(long id){
         return iAccountRepo.findById(id);
    }

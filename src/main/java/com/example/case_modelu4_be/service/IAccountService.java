@@ -5,9 +5,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public interface IAccountService extends UserDetailsService {
-    List<Account> getAll();
-    void save(Account account);
-    void delete(Long id);
+    Account findByUsername(String username);
+
+
+    Optional<Account> checkDoubleUser(String userName);
 }
