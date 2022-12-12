@@ -48,17 +48,10 @@ public class LoginController {
         if (accountService.checkDoubleUser(account.getUserName()).isPresent()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Account account1 = new Account();
-        account1.setUserName(account.getUserName());
-        account1.setPassWord(account.getPassWord());
-        account1.setEmail(account.getEmail());
-        account1.setPhoneNumber(account.getPhoneNumber());
-        account1.setAddress(account.getAddress());
-        String roles = "2";
-        Long role1 = Long.parseLong(roles);
-        account1.setRoles(roleService.findById(role1).get());
-        accountService.save(account1);
-        return new ResponseEntity<>(accountService.save(account1), HttpStatus.OK);
+        boolean status = true;
+        account.setStatus(status);
+        accountService.save(account);
+        return new ResponseEntity<>(accountService.save(account), HttpStatus.OK);
     }
 
     @GetMapping("/admin")
