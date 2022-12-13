@@ -13,6 +13,6 @@ public interface IAccountRepo extends CrudRepository<Account , Long> {
     Account findByUserName(String userName);
     Account findByEmail(String email);
 
-    @Query(value = "SELECT * FROM account where user_name = :userName group by user_name;", nativeQuery = true)
+    @Query(value = "SELECT * FROM account where user_name = :userName ", nativeQuery = true)
     Optional<Account> checkDoubleUser(@Param("userName") String user_name);
 }
