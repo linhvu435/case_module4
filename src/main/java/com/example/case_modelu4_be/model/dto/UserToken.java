@@ -10,4 +10,6 @@ public class UserToken {
     private String username;
     private Roles roles;
     private String token;
+    private Long id;
+
 }
