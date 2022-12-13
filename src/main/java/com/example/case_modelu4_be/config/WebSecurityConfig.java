@@ -1,6 +1,8 @@
 package com.example.case_modelu4_be.config;
 
 import com.example.case_modelu4_be.service.AccountService;
+import com.example.case_modelu4_be.config.JwtAuthenticationFilter;
+import com.example.case_modelu4_be.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/**");
-        http.authorizeRequests().antMatchers("/register","/home", "/login", "/register/user","/register/email","/admin/user","/admin/shop","/products").permitAll()
+        http.authorizeRequests().antMatchers("/register","/home", "/login", "/register/user","/register/email").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

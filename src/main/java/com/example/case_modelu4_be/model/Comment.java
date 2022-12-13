@@ -16,4 +16,7 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "id_product")
     private Product product;
+
+    public Comment() {
+    }
 }
