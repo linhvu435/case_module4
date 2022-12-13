@@ -13,4 +13,12 @@ public class Evaluate {
     @ManyToOne
     @JoinColumn(name = "id_account")
     private Account account;
+
+    public Evaluate(int number_star) {
+        this.number_star = number_star;
+    }
+
+    public Evaluate() {
+
+    }
 }
