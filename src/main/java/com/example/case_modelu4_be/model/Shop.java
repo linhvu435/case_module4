@@ -17,8 +17,7 @@ public class Shop {
     public Shop() {
     }
 
-    public Shop(long id, String name, Account account) {
-        this.id = id;
+    public Shop(String name, Account account) {
         this.name = name;
         this.account = account;
     }

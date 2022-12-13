@@ -29,9 +29,8 @@ public class CartService {
             sum += products.get(i).getAmount()*products.get(i).getPrice();
         }
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        Date date = new Date();
         Account account = iAccountRepo.findByUserName(userDetails.getUsername());
+        Date date = new Date();
         Bill bill = new Bill(sum, date, account);
         iBillRepo.save(bill);
         for (Product i : products) {
