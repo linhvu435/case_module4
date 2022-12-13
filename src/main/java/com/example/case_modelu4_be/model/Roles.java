@@ -3,16 +3,16 @@ package com.example.case_modelu4_be.model;
 import javax.persistence.*;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
 
 
 @Entity
-@Data
-public class Roles {
+
+public class Roles implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-
 
     public Roles() {
     }
@@ -22,7 +22,24 @@ public class Roles {
         this.name = name;
     }
 
-    public Roles(String name) {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String getAuthority() {
+        return name;
     }
 }
