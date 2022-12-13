@@ -16,4 +16,16 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "id_shop")
     private Shop shop;
+
+    public Product() {
+    }
+
+    public Product(long id, String name, String img, double price, int amount, Shop shop) {
+        this.id = id;
+        this.name = name;
+        this.img = img;
+        this.price = price;
+        this.amount = amount;
+        this.shop = shop;
+    }
 }
