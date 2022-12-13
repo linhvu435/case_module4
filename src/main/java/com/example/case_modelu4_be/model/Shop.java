@@ -13,4 +13,13 @@ public class Shop {
     @ManyToOne
     @JoinColumn(name = "id_account")
     private Account account;
+
+    public Shop() {
+    }
+
+    public Shop(long id, String name, Account account) {
+        this.id = id;
+        this.name = name;
+        this.account = account;
+    }
 }
