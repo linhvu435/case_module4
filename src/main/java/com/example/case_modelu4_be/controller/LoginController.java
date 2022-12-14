@@ -2,6 +2,7 @@ package com.example.case_modelu4_be.controller;
 
 import com.example.case_modelu4_be.model.Account;
 import com.example.case_modelu4_be.model.Roles;
+import com.example.case_modelu4_be.model.dto.UserToken;
 import com.example.case_modelu4_be.service.AccountService;
 import com.example.case_modelu4_be.service.IAccountService;
 import com.example.case_modelu4_be.service.JwtService;
@@ -35,12 +36,14 @@ public class LoginController {
     RoleService roleService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Account account) {
+    public ResponseEntity<UserToken> login(@RequestBody Account account) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(account.getUserName(), account.getPassWord()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtService.generateTokenLogin(authentication);
-        return new ResponseEntity<>(token, HttpStatus.OK);
+        Account account1 = accountService.findByName(account.getUserName());
+        UserToken userToken = new UserToken(account.getUserName(), account1.getRoles(), token, account1.getId());
+        return new ResponseEntity<>(userToken, HttpStatus.OK);
     }
 
     @PostMapping("/register")
